@@ -1,0 +1,29 @@
+re-create from installed
+
+ROOT_REPOSITORY=/mnt/data/2dev/p2.repository
+P2_NAME=tycho-build-tools
+ECLIPSE_FOLDER=/home/hieplq/1Dev/program/eclipse-201809
+
+1. copy feature, plugin to $ROOT_REPOSITORY/$P2_NAME
+
+extractFeatureDir=$ROOT_REPOSITORY/$P2_NAME/features/com.ibh.systems.build.tycho_0.5.2.201309301416
+cd $extractFeatureDir
+jar --create --file $extractFeatureDir/com.ibh.systems.build.tycho_0.5.2.201309301416.jar --manifest $extractFeatureDir/com.ibh.systems.build.tycho_0.5.2.201309301416/META-INF/MANIFEST.MF *
+
+2. create file $ROOT_REPOSITORY/P2_NAME/category.xml with content
+
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <category-def name="all" label="Maven osgi-bundles"/>
+    <iu>
+        <category name="all"/>
+        <query>
+            <expression type="match">providedCapabilities.exists(p | p.namespace == 'osgi.bundle')</expression>
+        </query>
+    </iu>
+</site>
+
+3. re-create p2
+
+$ECLIPSE_FOLDER/eclipse -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -compress -metadataRepository file:$ROOT_REPOSITORY/$P2_NAME -artifactRepository file:$ROOT_REPOSITORY/$P2_NAME -source $ROOT_REPOSITORY/$P2_NAME -publishArtifact
+$ECLIPSE_FOLDER/eclipse -application org.eclipse.equinox.p2.publisher.CategoryPublisher -compress -metadataRepository file:$ROOT_REPOSITORY/$P2_NAME -categoryQualifier -categoryDefinition file:$ROOT_REPOSITORY/$P2_NAME/category.xml
