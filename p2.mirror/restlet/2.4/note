@@ -1,0 +1,24 @@
+re-create from restlet release
+
+1. cd [restlet-root]
+2. download to local 
+	wget -r -np -nH   http://p2.restlet.com/2.4/
+3. create file [restlet-root]/2.4/category.xml with content
+
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <category-def name="all" label="Maven osgi-bundles"/>
+    <iu>
+        <category name="all"/>
+        <query>
+            <expression type="match">providedCapabilities.exists(p | p.namespace == 'osgi.bundle')</expression>
+        </query>
+    </iu>
+</site>
+
+4. create metadata
+	ROOT_REPOSITORY=[restlet-root]
+	P2_NAME=2.4
+	ECLIPSE_FOLDER=/home/hieplq/1Dev/program/eclipse-201809
+	$ECLIPSE_FOLDER/eclipse -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -compress -metadataRepository file:$ROOT_REPOSITORY/$P2_NAME -artifactRepository file:$ROOT_REPOSITORY/$P2_NAME -source $ROOT_REPOSITORY/$P2_NAME -publishArtifact
+	$ECLIPSE_FOLDER/eclipse -application org.eclipse.equinox.p2.publisher.CategoryPublisher -compress -metadataRepository file:$ROOT_REPOSITORY/$P2_NAME -categoryQualifier -categoryDefinition file:$ROOT_REPOSITORY/$P2_NAME/category.xml
