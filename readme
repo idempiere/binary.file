@@ -2,3 +2,6 @@ p2-third-party: clone, re-create p2 of other tool
 database: contain dump file of database for each release
 p2.mirror: some library has bad p2 (slow server, wrong manifest,...) like restlet
 p2.maven: main p2 library of idempiere, almost collect from maven, build up by idempiere/org.idempiere.maven.to.p2
+    binary.file/p2.maven/maven-p2-R20190118
+        https://idempiere.atlassian.net/browse/IDEMPIERE-2003
+        https://tracker.zkoss.org/browse/ZK-4198
