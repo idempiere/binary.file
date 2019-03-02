@@ -5,3 +5,5 @@ p2.maven: main p2 library of idempiere, almost collect from maven, build up by i
     binary.file/p2.maven/maven-p2-R20190118
         https://idempiere.atlassian.net/browse/IDEMPIERE-2003
         https://tracker.zkoss.org/browse/ZK-4198
+p2.maven/org.idempiere.webservice.client-p2-R20190302
+    bundles for development a webservice client
