@@ -1,0 +1,14 @@
+latest atmosphere (2.6.4) has bellow issue https://github.com/Atmosphere/atmosphere/issues/2424
+
+work-around:
+	modfy pom to make import of jnlp, testng become option and self build
+		https://github.com/hieplq/atmosphere/commit/93450bddbc855f445208e1dcd8b878c1f6c7bc37
+
+	build	
+		git clone -b 2424 git@github.com:hieplq/atmosphere.git
+		cd atmosphere/modules/cpr
+		mvn
+
+	output hasn't source bundle so download from https://repo1.maven.org/maven2/org/atmosphere/atmosphere-runtime/2.6.4/atmosphere-runtime-2.6.4-sources.jar
+
+org.idempiere.maven.to.p2 will download this bundle and source to build up p2
