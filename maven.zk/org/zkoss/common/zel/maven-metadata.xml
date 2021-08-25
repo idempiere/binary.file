@@ -3,13 +3,14 @@
   <groupId>org.zkoss.common</groupId>
   <artifactId>zel</artifactId>
   <versioning>
-    <release>9.5.0.1</release>
+    <release>9.6.0</release>
     <versions>
       <version>9.0.1</version>
       <version>9.0.1.2</version>
       <version>9.5.0</version>
       <version>9.5.0.1</version>
+      <version>9.6.0</version>
     </versions>
-    <lastUpdated>20201015071421</lastUpdated>
+    <lastUpdated>20210825080512</lastUpdated>
   </versioning>
 </metadata>
