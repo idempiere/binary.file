@@ -3,7 +3,7 @@
   <groupId>org.zkoss.zk</groupId>
   <artifactId>zkbind</artifactId>
   <versioning>
-    <release>9.6.0.1</release>
+    <release>9.6.1</release>
     <versions>
       <version>9.0.1</version>
       <version>9.0.1.2</version>
@@ -11,7 +11,8 @@
       <version>9.5.0.1</version>
       <version>9.6.0</version>
       <version>9.6.0.1</version>
+      <version>9.6.1</version>
     </versions>
-    <lastUpdated>20210902215941</lastUpdated>
+    <lastUpdated>20220123160606</lastUpdated>
   </versioning>
 </metadata>
