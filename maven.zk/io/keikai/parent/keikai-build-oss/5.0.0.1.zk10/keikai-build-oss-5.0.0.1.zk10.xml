@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.keikai.parent</groupId>
+    <artifactId>keikai-build-oss</artifactId>
+    <version>5.0.0.1.zk10</version>
+    <packaging>pom</packaging>
+    <name>Keikai Spreadsheet Build</name>
+    <url>https://www.keikai.io</url>
+
+    <scm>
+        <url>https://github.com/keikai/keikai</url>
+        <connection>scm:git:git@github.com:keikai/keikai.git</connection>
+    </scm>
+    <description>
+        to build binary zip file
+        https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Aggregation
+    </description>
+    <licenses>
+        <license>
+            <name>GNU General Public License, Version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <properties>
+        <zk.version>10.0.0</zk.version>
+        <zpoi.version>3.9.16</zpoi.version>
+        <commons-io.version>1.3.1</commons-io.version>
+        <commons-math.version>2.2</commons-math.version>
+        <jsoup.version>1.11.3</jsoup.version>
+        <servlet.version>2.4</servlet.version>
+        <jetty.version>9.4.27.v20200227</jetty.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+    </properties>
+    <repositories>
+        <repository>
+            <id>ZK Repository</id>
+            <url>https://mavensync.zkoss.org/maven2</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ZK Repository</id>
+            <name>Maven Plugin Repository</name>
+            <url>https://mavensync.zkoss.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <modules>
+        <module>keikai</module>
+        <module>kkmodel</module>
+        <module>kkapp</module>
+        <module>kkrelease</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>official</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.zkoss.maven</groupId>
+                        <artifactId>yuicompressor-maven-plugin-zk</artifactId>
+                        <version>1.2.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compress</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <nosuffix>true</nosuffix>
+                            <force>true</force>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
