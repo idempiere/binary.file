@@ -17,7 +17,7 @@ eclipse -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundl
 eclipse -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
    -metadataRepository file:///myhome/workspace/binary.file/p2.repackaged/jasperstudio/6.17.0 \
    -artifactRepository file:///myhome/workspace/binary.file/p2.repackaged/jasperstudio/6.17.0 \
-   -source  /myhome/workspace/topublish/plugins \
+   -source /myhome/workspace/topublish \
    -configs gtk.linux.x86 \
    -compress \
    -publishArtifacts
